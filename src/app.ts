@@ -1,7 +1,14 @@
+/**
+ * First example class
+ */
 class App {
-    run(){
-        console.log('done 1');
-    }
+  /**
+ * First example method of class App
+ * @param what Key to identify value in container.
+ */
+  run(what: string): void {
+    console.log('done ', what);
+  }
 }
 
-new App().run()
+new App().run('dick');
