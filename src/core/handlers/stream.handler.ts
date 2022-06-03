@@ -1,6 +1,10 @@
-import { ChildProcess, ChildProcessWithoutNullStreams } from 'child_process';
+import { ChildProcessWithoutNullStreams } from 'child_process';
 import { IStreamLogger } from './Stream-logger.interface';
 
+/**
+ * StreamHandler class абстрактная ручка встраивания логов в outstream
+ * @param logger логгер типа IStreamLogger
+ */
 export class StreamHandler {
   constructor(private logger: IStreamLogger) {}
 
