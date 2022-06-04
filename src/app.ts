@@ -1,17 +1,19 @@
-import PromptService from './core/prompt/prompt.service';
+import PromptService from "./core/prompt/prompt.service";
+import FfmpegExec from "./commands/ffmpeg/ffmpeg.exec";
+import ConsoleLogger from "./out/console-logger/console-logger";
 
 /**
  * First example class
  */
 class App {
   /**
- * First example method of class App
- * @param what Key to identify value in container.
- */
-  async run(what: string) {
-    const res = await (new PromptService()).input<number>('Число', 'number');
-    console.log(res);
+   * First example method of class App
+   * @param what Key to identify value in container.
+   */
+  async run() {
+    await new FfmpegExec(ConsoleLogger.getInstance()).execute();
   }
 }
 
-new App().run('dick');
+const app = new App();
+app.run();
