@@ -12,7 +12,12 @@ export default abstract class CommandExecutor<Input> {
     this.processStream(stream, this.logger);
   }
 
-  protected abstract prompt(): Promise<Input>;
+  protected abstract prompt(): {
+    path: Promise<any>;
+    width: Promise<any>;
+    name: Promise<any>;
+    height: Promise<any>;
+  };
   protected abstract build(input: Input): ICommandExec;
   protected abstract spawn(
     command: ICommandExec
