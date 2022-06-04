@@ -6,7 +6,7 @@ import { IStreamLogger } from "../../core/handlers/Stream-logger.interface";
 export default class ConsoleLogger implements IStreamLogger {
   private static logger: ConsoleLogger;
 
-  private static getInstance() {
+  static getInstance() {
     if (!ConsoleLogger.logger) {
       ConsoleLogger.logger = new ConsoleLogger();
     }

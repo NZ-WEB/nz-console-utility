@@ -1,6 +1,6 @@
-import inquirer from 'inquirer';
+import inquirer from "inquirer";
 // eslint-disable-next-line import/extensions
-import { PromptType } from './prompt.types';
+import { PromptType } from "./prompt.types";
 
 /**
  * Prompt Service Class реализует функционал ввода данных в STD.IN
@@ -12,10 +12,10 @@ export default class PromptService {
    * @param type set type of prop
    */
   public async input<T>(message: string, type: PromptType) {
-    const { result } = await inquirer.prompt<{result: T}>([
+    const { result } = await inquirer.prompt<{ result: T }>([
       {
         type,
-        name: 'result',
+        name: "result",
         message,
       },
     ]);

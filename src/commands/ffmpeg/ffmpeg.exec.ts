@@ -12,16 +12,11 @@ export default class FfmpegExec extends CommandExecutor<IFfmpegInput> {
   private fileService: FileService = new FileService();
   private promptService: PromptService = new PromptService();
 
-  protected prompt(): {
-    path: Promise<string>;
-    width: Promise<number>;
-    name: Promise<string>;
-    height: Promise<number>;
-  } {
-    const width = this.promptService.input<number>("Ширина", "number");
-    const height = this.promptService.input<number>("Высота", "number");
-    const path = this.promptService.input<string>("Путь", "input");
-    const name = this.promptService.input<string>("Имя файла", "input");
+  protected async prompt(): Promise<IFfmpegInput> {
+    const width = await this.promptService.input<number>("Ширина", "number");
+    const height = await this.promptService.input<number>("Высота", "number");
+    const path = await this.promptService.input<string>("Путь", "input");
+    const name = await this.promptService.input<string>("Имя файла", "input");
     return { width, height, path, name };
   }
 

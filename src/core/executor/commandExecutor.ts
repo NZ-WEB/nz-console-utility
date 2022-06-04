@@ -1,6 +1,7 @@
 import { IStreamLogger } from "../handlers/Stream-logger.interface";
 import { ChildProcessWithoutNullStreams, spawn } from "child_process";
 import { ICommandExec } from "./command.types";
+import { IFfmpegInput } from "../../commands/ffmpeg/ffmpeg.types";
 
 export default abstract class CommandExecutor<Input> {
   constructor(private logger: IStreamLogger) {}
@@ -12,12 +13,7 @@ export default abstract class CommandExecutor<Input> {
     this.processStream(stream, this.logger);
   }
 
-  protected abstract prompt(): {
-    path: Promise<any>;
-    width: Promise<any>;
-    name: Promise<any>;
-    height: Promise<any>;
-  };
+  protected abstract prompt(): Promise<Input>;
   protected abstract build(input: Input): ICommandExec;
   protected abstract spawn(
     command: ICommandExec
